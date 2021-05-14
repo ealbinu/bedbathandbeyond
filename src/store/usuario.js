@@ -87,6 +87,31 @@ const actions = {
             })
         })
     },
+    async verificarEmail({commit}, email) {
+        return new Promise((resolve, reject) => {
+            api.post('/App_ValidateEmail', {Email:email}).then(res => {
+                if(res.data[0]){
+                    resolve({error: false})
+                } else {
+                    resolve({error:true})
+                }
+            })
+        })
+    },
+    
+    async recuperar({commit}, email) {
+        return new Promise((resolve, reject) => {
+            api.post('/App_RecoverEmail', {UID:email}).then(res => {
+                console.log(res.data[0])
+                if(res.data[0]){
+                    resolve({error: false})
+                } else {
+                    resolve({error:true})
+                }
+            })
+        })
+    },
+
 }
 
 

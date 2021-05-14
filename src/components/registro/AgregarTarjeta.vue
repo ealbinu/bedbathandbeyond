@@ -26,9 +26,10 @@ div.row.column.q-my-xl.text-center
             q-toolbar.text-center.bg-primary.text-white
                 q-toolbar-title().text-body1 Tarjeta digital
             q-card-section
-                .text-center Da clic para obtener tu tarjeta digital #[br] #[strong.text-primary {{$appName}}]
+                .text-center Ingresa tu correo para obtener tu tarjeta digital #[br] #[strong.text-primary {{$appName}}]
                 q-form(@submit.prevent="submitDigital").row.text-center.q-mt-lg
-                    
+                    .col-12
+                        q-input(v-model="email" required label="Correo electrónico" v-bind="$inputAttr")
                     .col-12.q-mt-sm
                         q-btn(color="primary" label="Obtener tarjeta digital" type="submit" v-bind="$btnAttr")
 </template>
@@ -41,7 +42,8 @@ export default {
             dialogDigital: false,
             plasticCard: null,
             digitalCard: null,
-            persistent: false
+            persistent: false,
+            email: null,
         }
     },
     methods: {
@@ -59,10 +61,29 @@ export default {
             })
         },
         submitDigital () {
+            //Verificar email
             var _this = this
-            // No permitir que el usuario cierre el diálogo
-            this.persistent = true
-            this.$q.loading.show()
+            _this.$q.loading.show()
+            _this.$store.dispatch('usuario/verificarEmail', _this.email).then(res=>{
+                if(res.error==true){
+                    _this.$q.notify({
+                        message: 'Ya hay una cuenta con esta dirección de correo.',
+                        actions: [
+                            { label: 'Recuperar acceso', color: 'white', handler: () => {
+                                _this.dialogDigital = false
+                                _this.$router.push({path: '/', query: {recover: _this.email} } )
+                            } },
+                        ]
+                    })
+                } else {
+                    this.validEmailProceed()
+                }
+                _this.$q.loading.hide()
+            })
+
+        },
+        validEmailProceed () {
+            var _this = this
             const request = {
                 HWID: _this.$store.getters['usuario/getuid'],
                 ProductID: "free",
@@ -70,18 +91,18 @@ export default {
                 Purchased: 1,
                 Registered: 0,
                 CardID: "258",
-                UID: "",
+                UID: _this.email,
                 Platform: _this.$q.platform.is.ios?'ios':'android',
                 TransactionID: "000"
             }
-            this.$store.dispatch('tarjeta/generateDigitalCard', request).then(res => {
-                this.$q.loading.hide()
-                this.dialogDigital = false
+            _this.$store.dispatch('tarjeta/generateDigitalCard', request).then(res => {
+                _this.$q.loading.hide()
+                _this.dialogDigital = false
                 if(!res.error){
-                    this.$emit('tarjetaValida', {card: res.CardID, type:'digital'})
-                    this.$q.notify('Tarjeta generada: ' + res.CardID)
+                    _this.$emit('tarjetaValida', {card: res.CardID, type:'digital', validemail: _this.email})
+                    _this.$q.notify('Tarjeta generada: ' + res.CardID)
                 } else {
-                    this.$q.notify('Ocurrió un error. Intenta de nuevo.')
+                    _this.$q.notify('Ocurrió un error. Intenta de nuevo.')
                 }
             })
         }

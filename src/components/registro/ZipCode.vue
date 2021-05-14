@@ -1,12 +1,12 @@
 <template lang="pug">
-q-input(v-model="zipcodeval" required autocomplete="postal-code" label="Código postal *" v-bind="$inputAttr" mask="#####" :rules="[ val => val && val.length > 3 || 'Campo obligatorio.']" ref="ZipCode" @input="modified")
+q-input(v-model="zipcodeval" required autocomplete="postal-code" label="Código postal *" v-bind="$inputAttr" mask="#####" :rules="[ val => val && val.length > 3 || 'Campo obligatorio.']" @input="modified")
     template(v-slot:append)
         q-btn(v-bind="$btnAttr" color="primary" label="Verificar" :disable="zipcodeval==null || zipcodeval.length<4" size="sm" @click="verificarCP" v-if="!validated")
 </template>
 
 <script>
 export default {
-    props: [],
+    props: ['value'],
     components: {},
     data () {
         return {
@@ -36,6 +36,10 @@ export default {
                 }
             })
         },
+    },
+    mounted () {
+        this.zipcodeval = this.value
+        this.validated = true
     }
 }
 </script>
