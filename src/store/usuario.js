@@ -1,14 +1,17 @@
 import {api} from 'boot/axios'
 import { name } from '../../package.json'
-
+import { uid } from 'quasar'
 
 const state = {
-    uid: localStorage.getItem(name+'_uid') || null,
-    user: JSON.parse(localStorage.getItem(name+'_user') || null) || null
+    //uid: localStorage.getItem(name+'_uid') || null,
+    uid: uid(),
+    user: JSON.parse(localStorage.getItem(name+'_user') || null) || null,
+    userinfo: null,
 }
 const getters = {
     getuid: (state) => state.uid,
     getuser: (state) => state.user,
+    getuserinfo: (state) => state.userinfo,
     isauthenticated: (state) => !!state.user.CustomerID
 }
 const actions = {
@@ -44,6 +47,24 @@ const actions = {
 
                 } else {
                     resolve({error: true})
+                }
+            })
+        })
+    },
+    async info({commit}) {
+        return new Promise((resolve, reject) => {
+
+            var body = {
+                UserName: state.user.UserName,
+                Password: state.user.Password
+            }
+            console.log(body)
+            api.post('/App_GetUserInfo_V125', body).then(res => {
+                if(res.data[0]){
+                    commit('SET_USERINFO',res.data[0])
+                    resolve(res.data[0])
+                } else {
+                    resolve({error:true})
                 }
             })
         })
@@ -122,6 +143,9 @@ const mutations = {
     },
     SET_USERID(state, data) {
         state.plasticCardData = data
+    },
+    SET_USERINFO(state, data) {
+        state.userinfo = data
     },
     SET_USER(state, data) {
         localStorage.setItem(name+'_user', JSON.stringify(data))

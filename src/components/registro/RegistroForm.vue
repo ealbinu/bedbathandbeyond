@@ -148,10 +148,12 @@ export default {
             }
         },
         submit () {
+            /*
             if(!this.submitReady()){
                 this.$q.notify('Verifica que hayas llenado todos los campos obligatorios.')
                 return false
             }
+            */
             var request = this.user
             request.CardID = this.card.card
             request.RegisterTypeID = this.$q.platform.is.ios?2:3

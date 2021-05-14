@@ -4,9 +4,10 @@ q-page(padding)
     img(:alt="$appName" src="~assets/logo.svg").logo
 
   q-list(bordered).bg-grey-2.q-my-xl
-    q-item(v-for="(i, index) in datosuser" v-if="user[i.field]" :key="index"): q-item-section
+    q-item(v-for="(i, index) in datosuser" v-if="userinfo[i.field]" :key="index"): q-item-section
       q-item-label(caption) {{i.text}}
-      q-item-label {{user[i.field]}}
+      q-item-label(v-if="i.field=='BirthDate'") {{ parseDate(userinfo[i.field]) }}
+      q-item-label(v-else) {{userinfo[i.field]}}
 
 
   .row.column.q-my-lg
@@ -20,7 +21,7 @@ q-page(padding)
 <script>
 import TerminosYCondiciones from 'components/TerminosYCondiciones'
 import AvisoDePrivacidad from 'components/AvisoDePrivacidad'
-
+import { date } from 'quasar'
 export default {
   components: {
     TerminosYCondiciones,
@@ -41,14 +42,29 @@ export default {
         {text: 'Teléfono móvil', field: 'CellPhone'},
         {text: 'Fecha de nacimiento', field: 'BirthDate'},
         {text: 'Género', field: 'Sex'},
+        {text: 'CódigoPostal', field: 'PostalCode'},
+        {text: 'Estado', field: 'State'},
+        {text: 'Count', field: 'Ciudad'},
+        {text: 'Colonia', field: 'Suburb'},
       ]
     }
   },
   computed: {
-    user () {
-      return this.$store.getters['usuario/getuser']
-    }
+    userinfo () {
+      return this.$store.getters['usuario/getuserinfo']
+    },
   },
+  methods: {
+    parseDate (jsonDateString) {
+        var dateP = parseInt(jsonDateString.replace('/Date(', ''))
+        return date.formatDate(dateP, 'YYYY/MM/DD')
+    },
+  },
+  mounted () {
+    this.$store.dispatch('usuario/info').then(res => {
+      console.log(res)
+    })
+  }
 }
 </script>
 
