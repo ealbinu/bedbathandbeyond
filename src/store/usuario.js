@@ -16,16 +16,32 @@ const actions = {
         localStorage.setItem(name+'_uid', newuid)
         commit('SET_UID', newuid)
     },
-    async signUp({commit}, body) {
+    async signUp({commit}, request) {
         return new Promise((resolve, reject) => {
-            api.post('/App_RegisterNewUser_V110', body).then(res => {
+            api.post('/App_RegisterNewUser_V110', request).then(res => {
                 if(res.data[0].ResultID>=0){
-                    var userdata = {
-                        CardID: res.data[0].PlasticCardID
+                    console.log('Registro ok')
+                    // LOGIN al recibir ok
+                    var body = {
+                        UserName: request.Email,
+                        Password: request.Password,
                     }
-                    localStorage.setItem(name+'_user', JSON.stringify(userdata))
-                    commit('SET_USER', userdata)
-                    resolve(userdata)
+                    api.post('/App_AuthenticateUser_V113', body).then(res => {
+                        if(res.data[0]){
+                            console.log('Login Ok')
+                            var userdata = res.data[0]
+                            userdata.Password = body.Password
+                            userdata.UserName = body.UserName.toLowerCase()
+                            userdata.CardID = res.data[0].PlasticCardID
+                            commit('SET_USER',userdata)
+                            resolve(userdata)
+                        } else {
+                            resolve({error:true})
+                        }
+                    })
+                    
+
+
                 } else {
                     resolve({error: true})
                 }

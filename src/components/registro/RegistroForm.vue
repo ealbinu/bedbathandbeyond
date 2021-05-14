@@ -23,16 +23,16 @@ q-form(@submit.prevent="submit").row.q-pa-xl.q-col-gutter-sm
     .col-12
         q-input(v-model="user.Phone" label="Teléfono fijo" type="tel" mask="##-####-####" fill-mask unmasked-value v-bind="$inputAttr" hint="10 dígitos.")
     .col-12
-        q-input(v-model="user.CellPhone" autocomplete="tel" type="tel" label="Teléfono celular *" fill-mask mask="##-####-####" unmasked-value  v-bind="$inputAttr" hint="10 dígitos." :rules="[ val => val && val.length >= 10 || '10 dígitos.']" ref="CellPhone")
+        q-input(v-model="user.CellPhone" required autocomplete="tel" type="tel" label="Teléfono celular *" fill-mask mask="##-####-####" unmasked-value  v-bind="$inputAttr" hint="10 dígitos." :rules="[ val => val && val.length >= 10 || '10 dígitos.']" ref="CellPhone")
     
     .col-12
-        q-input(v-model="user.BirthDate" mask="date" fill-mask autocomplete="bday" label="Fecha de nacimiento *" stack-label v-bind="$inputAttr")
+        q-input(v-model="user.BirthDate" required mask="date" fill-mask autocomplete="bday" label="Fecha de nacimiento *" stack-label v-bind="$inputAttr")
             template(v-slot:append)
                 q-icon(name="las la-calendar").cursor-pointer
                     q-popup-proxy(ref="birthproxy")
                         q-date(v-model="user.BirthDate" minimal)
     .col-12
-        label Género
+        label Género:
         q-radio(v-model="user.Sex" val="Femenino" label="Femenino")
         q-radio(v-model="user.Sex" val="Masculino" label="Masculino")
     
@@ -57,7 +57,7 @@ q-form(@submit.prevent="submit").row.q-pa-xl.q-col-gutter-sm
         
 
     .col-12.q-mt-sm.text-center
-        q-btn(color="primary" label="Registrarme" type="submit" v-bind="$btnAttr" :disable="!submitReady")
+        q-btn(color="primary" label="Registrarme" type="submit" v-bind="$btnAttr")
 
 
 </template>
@@ -94,8 +94,8 @@ export default {
         }
     },
     watch: {
-        politicas () { this.submitReady },
-        zipcodeOps () { this.submitReady },
+        politicas () { this.submitReady() },
+        zipcodeOps () { this.submitReady() },
     },
     computed: {
         colonias () {
@@ -106,8 +106,9 @@ export default {
             }
             return cols
         },
+    },
+    methods: {
         submitReady () {
-            console.log(this.user)
             if(
                 this.user.Email &&
                 this.user.Password &&
@@ -118,14 +119,11 @@ export default {
                 this.politicas &&
                 this.zipcodeOps.length > 0
             ) {
-                console.log('::Submitready')
                 return true
             } else {
                 return false
             }
-        }
-    },
-    methods: {
+        },
         validZipCode($ev){
             if(!$ev){
                 this.zipcodeOps = []
@@ -142,6 +140,10 @@ export default {
             }
         },
         submit () {
+            if(!this.submitReady()){
+                this.$q.notify('Verifica que hayas llenado todos los campos obligatorios.')
+                return false
+            }
             var request = this.user
             request.CardID = this.card.card
             request.RegisterTypeID = this.$q.platform.is.ios?2:3
@@ -151,10 +153,10 @@ export default {
                 if(!res.error){
                     _this.$q.notify('Registro exitoso')
                     _this.$router.push('/tarjeta')
-                    _this.$q.loading.show()
                 } else {
                     _this.$q.notify('Ocurrió un error. Intente de nuevo.')
                 }
+                    _this.$q.loading.hide()
             })
         }
     },

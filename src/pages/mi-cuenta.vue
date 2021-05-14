@@ -1,9 +1,9 @@
 <template lang="pug">
 q-page(padding)
-  .row.column: .text-center.q-my-lg
+  .row.column: .text-center.q-my-xl
     img(:alt="$appName" src="~assets/logo.svg").logo
 
-  q-list(bordered).bg-grey-2.q-my-lg
+  q-list(bordered).bg-grey-2.q-my-xl
     q-item(v-for="(i, index) in datosuser" v-if="user[i.field]" :key="index"): q-item-section
       q-item-label(caption) {{i.text}}
       q-item-label {{user[i.field]}}
