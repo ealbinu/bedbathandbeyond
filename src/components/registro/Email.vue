@@ -19,6 +19,7 @@ export default {
         injectmail (email) {
             this.email = email
             this.valid = true
+            this.$emit('validated', true)
         },
         verificar () {
             var _this = this
