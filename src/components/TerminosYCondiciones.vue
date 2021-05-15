@@ -5,7 +5,6 @@ q-card.full-width
     q-card-section
         q-scroll-area(style="height: 70vh")
             q-markdown.
-                :::
                 Definiciones
 
                 Para Bed, Bath & Beyond Rewards los términos establecidos a continuación tendrán los siguientes significados:
@@ -32,7 +31,6 @@ q-card.full-width
                 **f) Beneficios Bed, Bath & Beyond Rewards:**
 
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque distinctio esse velit tempore beatae, quaerat adipisci natus laboriosam. Veniam excepturi tenetur qui at libero,
-                :::
 </template>
 
 <script>

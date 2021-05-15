@@ -3,7 +3,7 @@ q-page(padding)
   .row.column: .text-center.q-my-xl
     img(:alt="$appName" src="~assets/logo.svg").logo
 
-  q-list(bordered).bg-grey-2.q-my-xl
+  q-list(bordered).bg-grey-2.q-my-xl(v-if="userinfo")
     q-item(v-for="(i, index) in datosuser" v-if="userinfo[i.field]" :key="index"): q-item-section
       q-item-label(caption) {{i.text}}
       q-item-label(v-if="i.field=='BirthDate'") {{ parseDate(userinfo[i.field]) }}
@@ -50,6 +50,9 @@ export default {
     }
   },
   computed: {
+    user () {
+      return this.$store.getters['usuario/getuser']
+    },
     userinfo () {
       return this.$store.getters['usuario/getuserinfo']
     },
@@ -59,11 +62,21 @@ export default {
         var dateP = parseInt(jsonDateString.replace('/Date(', ''))
         return date.formatDate(dateP, 'YYYY/MM/DD')
     },
-  },
-  mounted () {
-    this.$store.dispatch('usuario/info').then(res => {
+    loadItems () {
+    var request = {
+        UserName: this.user.UserName,
+        Password: this.user.Password
+    }
+
+    this.$store.dispatch('usuario/info', request).then(res => {
       console.log(res)
     })
+    }
+  },
+  mounted () {
+
+    this.loadItems()
+    
   }
 }
 </script>

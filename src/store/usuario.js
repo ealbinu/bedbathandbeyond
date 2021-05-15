@@ -51,14 +51,8 @@ const actions = {
             })
         })
     },
-    async info({commit}) {
+    async info({commit}, body) {
         return new Promise((resolve, reject) => {
-
-            var body = {
-                UserName: state.user.UserName,
-                Password: state.user.Password
-            }
-            console.log(body)
             api.post('/App_GetUserInfo_V125', body).then(res => {
                 if(res.data[0]){
                     commit('SET_USERINFO',res.data[0])
