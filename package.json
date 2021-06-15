@@ -19,6 +19,7 @@
     "pug-plain-loader": "^1.1.0",
     "quasar": "^1.0.0",
     "vue-crypt": "^1.0.0",
+    "vue-lottie": "^0.2.1",
     "x5-gmaps": "^0.5.2"
   },
   "devDependencies": {

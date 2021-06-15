@@ -21,7 +21,6 @@ const actions = {
         })
     },
     async generateDigitalCard({commit}, body) {
-        
         return new Promise((resolve, reject) => {
             api.post('/App_PostVirtualCard', body).then(res => {
                 if(res.data[0]){

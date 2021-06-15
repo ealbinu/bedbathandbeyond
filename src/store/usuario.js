@@ -81,7 +81,7 @@ const actions = {
     },
     async logout({commit}, body) {
         return new Promise((resolve, reject) => {
-            api.post('/App_AuthenticateUser_V113', {UserName:body}).then(res => {
+            api.post('/App_PostSignOut', {UserName:body}).then(res => {
                 if(res){
                     commit('UNSET_USER')
                     resolve(res.data[0])

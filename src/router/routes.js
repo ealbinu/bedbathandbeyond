@@ -41,6 +41,22 @@ const routes = [
     meta: { forAuth: false}
   },
   {
+    path: '/beneficios',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '',component: () => import('pages/Beneficios.vue'), meta: {title: 'Beneficios'}}
+    ],
+    meta: { forAuth: false}
+  },
+  {
+    path: '/contacto',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '',component: () => import('pages/Contacto.vue'), meta: {title: 'Contacto'}}
+    ],
+    meta: { forAuth: false}
+  },
+  {
     path: '/mi-cuenta',
     component: () => import('layouts/MainLayout.vue'),
     children: [

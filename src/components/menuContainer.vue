@@ -34,6 +34,16 @@ export default {
                     path: '/sucursales'
                 },
                 {
+                    icon: 'las la-wallet',
+                    text: 'Beneficios',
+                    path: '/beneficios'
+                },
+                {
+                    icon: 'las la-phone',
+                    text: 'Contacto',
+                    path: '/contacto'
+                },
+                {
                     icon: 'las la-user',
                     text: 'Mi cuenta',
                     path: '/mi-cuenta'

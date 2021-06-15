@@ -1,6 +1,6 @@
 <template lang="pug">
   q-page(padding)
-    q-carousel(v-model="carrusel" animated control-color="primary" navigation infinite :autoplay="true" arrows).rounded-borders.full-height
+    q-carousel(v-model="carrusel" swipeable animated control-color="primary" transition-prev="slide-right" transition-next="slide-left" navigation infinite :autoplay="true" arrows).rounded-borders.full-height
       q-carousel-slide(v-for="(i, index) in promociones" :name="index" :key="index" :placeholder-src="'data:image/png;base64, '+$placeholderImg")
         q-img(:src="'data:image/png;base64, '+(i.Base64_Image||$placeholderImg)")
         div.q-mb-xl
