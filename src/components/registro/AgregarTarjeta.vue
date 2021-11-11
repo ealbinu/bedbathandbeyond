@@ -1,7 +1,7 @@
 <template lang="pug">
 div.row.column.q-my-xl.text-center
     q-card.bg-grey-3.q-ma-sm(flat): q-card-section
-        .text-body1 ¡Si ya cuentas con tu tarjeta #[br] #[strong.text-primary {{$appName}}] #[br] registra tus datos!
+        .text-body1 ¡Si ya cuentas con tu tarjeta plástica #[br] #[strong.text-primary {{$appName}}] #[br] registra tus datos!
         .text-center.q-mt-md
             q-btn(color="primary" label="Registrarme" v-bind="$btnAttr" @click="dialogPlastic = true")
     q-card.bg-grey-3.q-ma-sm(flat): q-card-section

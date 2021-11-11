@@ -1,0 +1,243 @@
+{
+  "project_info": {
+    "project_number": "53027212016",
+    "firebase_url": "https://blue-apps-147519.firebaseio.com",
+    "project_id": "blue-apps-147519",
+    "storage_bucket": "blue-apps-147519.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53027212016:android:c7616480ffd37515901035",
+        "android_client_info": {
+          "package_name": "com.BluePureLoyalty.BeBenettonMx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "53027212016-37gf4219nof2551r433ne5kdkm2ibro0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuzZG-TWIAtFRNiKeTuR7kDmu2zGgHsZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "53027212016-37gf4219nof2551r433ne5kdkm2ibro0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53027212016:android:385fa2225844d89d901035",
+        "android_client_info": {
+          "package_name": "com.BluePureLoyalty.bedbathandbeyond"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "53027212016-37gf4219nof2551r433ne5kdkm2ibro0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuzZG-TWIAtFRNiKeTuR7kDmu2zGgHsZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "53027212016-37gf4219nof2551r433ne5kdkm2ibro0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53027212016:android:5f86978910e7a4bb901035",
+        "android_client_info": {
+          "package_name": "com.BluePureLoyalty.recompensasyza"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "53027212016-37gf4219nof2551r433ne5kdkm2ibro0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuzZG-TWIAtFRNiKeTuR7kDmu2zGgHsZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "53027212016-37gf4219nof2551r433ne5kdkm2ibro0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53027212016:android:f53089999dda97dc901035",
+        "android_client_info": {
+          "package_name": "com.bluepureloyalty.BeBenettonMx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "53027212016-37gf4219nof2551r433ne5kdkm2ibro0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuzZG-TWIAtFRNiKeTuR7kDmu2zGgHsZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "53027212016-37gf4219nof2551r433ne5kdkm2ibro0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53027212016:android:cdbf2cb3691002f9901035",
+        "android_client_info": {
+          "package_name": "com.bluepureloyalty.ElTarjeton"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "53027212016-37gf4219nof2551r433ne5kdkm2ibro0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuzZG-TWIAtFRNiKeTuR7kDmu2zGgHsZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "53027212016-37gf4219nof2551r433ne5kdkm2ibro0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53027212016:android:40b32c7ecdb4aad8",
+        "android_client_info": {
+          "package_name": "com.bluepureloyalty.Pagina1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "53027212016-37gf4219nof2551r433ne5kdkm2ibro0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuzZG-TWIAtFRNiKeTuR7kDmu2zGgHsZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "53027212016-37gf4219nof2551r433ne5kdkm2ibro0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53027212016:android:c5c49b7186a80243",
+        "android_client_info": {
+          "package_name": "com.bluepureloyalty.clublumen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "53027212016-37gf4219nof2551r433ne5kdkm2ibro0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuzZG-TWIAtFRNiKeTuR7kDmu2zGgHsZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "53027212016-37gf4219nof2551r433ne5kdkm2ibro0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53027212016:android:399a505291c387bb901035",
+        "android_client_info": {
+          "package_name": "com.yza.core.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "53027212016-37gf4219nof2551r433ne5kdkm2ibro0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuzZG-TWIAtFRNiKeTuR7kDmu2zGgHsZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "53027212016-37gf4219nof2551r433ne5kdkm2ibro0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

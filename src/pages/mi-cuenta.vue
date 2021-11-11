@@ -1,20 +1,26 @@
 <template lang="pug">
 q-page(padding)
-  .row.column: .text-center.q-my-xl
-    img(:alt="$appName" src="~assets/logo.svg").logo
+  q-pull-to-refresh(@refresh="loadItemsRefresh")
+    .row.column: .text-center.q-my-xl
+      img(:alt="$appName" src="~assets/logo.svg").logo
 
-  q-list(bordered).bg-grey-2.q-my-xl(v-if="userinfo")
-    q-item(v-for="(i, index) in datosuser" v-if="userinfo[i.field]" :key="index"): q-item-section
-      q-item-label(caption) {{i.text}}
-      q-item-label(v-if="i.field=='BirthDate'") {{ parseDate(userinfo[i.field]) }}
-      q-item-label(v-else) {{userinfo[i.field]}}
+    
+    q-list(bordered).bg-grey-2.q-my-xl(v-if="userinfo")
+      q-item(): q-item-section
+        q-item-label(caption) Correo electrónico
+        q-item-label {{ user.LoginID }}
+      
+      q-item(v-for="(i, index) in datosuser" v-if="userinfo[i.field]" :key="index"): q-item-section
+        q-item-label(caption) {{i.text}}
+        q-item-label(v-if="i.field=='BirthDate'") {{ parseDate(userinfo[i.field]) }}
+        q-item-label(v-else) {{userinfo[i.field]}}
 
 
-  .row.column.q-my-lg
-    q-btn(label="Términos y Condiciones" text-color="primary" flat no-caps @click="dialogTYC=true") 
-    q-btn(label="Aviso de Privacidad" text-color="primary" flat  no-caps @click="dialogAviso=true").q-mt-md
-    q-dialog(v-model="dialogTYC"): TerminosYCondiciones
-    q-dialog(v-model="dialogAviso"): AvisoDePrivacidad
+    .row.column.q-my-lg
+      q-btn(label="Términos y Condiciones" text-color="primary" flat no-caps @click="dialogTYC=true") 
+      q-btn(label="Aviso de Privacidad" text-color="primary" flat  no-caps @click="dialogAviso=true").q-mt-md
+      q-dialog(v-model="dialogTYC"): TerminosYCondiciones
+      q-dialog(v-model="dialogAviso"): AvisoDePrivacidad
 </template>
 
 
@@ -62,16 +68,29 @@ export default {
         var dateP = parseInt(jsonDateString.replace('/Date(', ''))
         return date.formatDate(dateP, 'YYYY/MM/DD')
     },
+    loadItemsRefresh (done) {
+      var request = {
+          UserName: this.user.UserName,
+          Password: this.user.Password
+      }
+      this.$store.dispatch('usuario/login', request).then(res => {
+        this.$store.dispatch('usuario/info', request).then(res => {
+          //console.log('Info:',res)
+          done()
+        })
+      })
+    },
     loadItems () {
-    var request = {
-        UserName: this.user.UserName,
-        Password: this.user.Password
-    }
-
-    this.$store.dispatch('usuario/info', request).then(res => {
-      console.log(res)
-    })
-    }
+      var request = {
+          UserName: this.user.UserName,
+          Password: this.user.Password
+      }
+      this.$store.dispatch('usuario/login', request).then(res => {
+        this.$store.dispatch('usuario/info', request).then(res => {
+          //console.log('Info:',res)
+        })
+      })
+    },
   },
   mounted () {
 

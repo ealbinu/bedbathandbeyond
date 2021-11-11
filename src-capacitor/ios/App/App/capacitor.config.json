@@ -1,0 +1,7 @@
+{
+  "appId": "com.BluePureLoyalty.bedbathandbeyond",
+  "appName": "Bed Bath & Beyond Rewards",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

@@ -38,6 +38,7 @@ export default {
             }
             this.$store.dispatch('usuario/transactions', request).then(res => {
                 this.items = res
+                //console.log('Actividad:',this.items)
             })
         }
     },

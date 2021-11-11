@@ -1,0 +1,13 @@
+{
+  "name": "bedbathandbeyond",
+  "version": "0.0.3",
+  "description": "Bed Bath & Beyond Rewards es el programa de lealtad diseñado para recompensar y reconocer tu preferencia otorgándote múltiples beneficios:",
+  "author": "Blue Pure Loyalty",
+  "private": true,
+  "dependencies": {
+    "@capacitor/android": "^2.4.7",
+    "@capacitor/cli": "^2.0.0",
+    "@capacitor/core": "^2.0.0",
+    "@capacitor/ios": "^2.4.7"
+  }
+}

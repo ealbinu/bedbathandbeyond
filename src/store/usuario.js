@@ -81,6 +81,9 @@ const actions = {
     },
     async logout({commit}, body) {
         return new Promise((resolve, reject) => {
+            commit('UNSET_USER')
+            resolve({})
+            /*
             api.post('/App_PostSignOut', {UserName:body}).then(res => {
                 if(res){
                     commit('UNSET_USER')
@@ -89,6 +92,7 @@ const actions = {
                     resolve({error:true})
                 }
             })
+            */
         })
     },
     async transactions({commit}, body) {

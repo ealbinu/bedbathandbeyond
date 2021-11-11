@@ -1,3 +1,5 @@
+// icongenie g -i app-icon.png -b app-splashscreen.png --skip-trim --splashscreen-icon-ratio 0
+
 
 import { name, productName, version } from '../../package.json'
 
@@ -11,8 +13,8 @@ export default async ({ app, router, Vue, store}) => {
   Vue.prototype.$appidName = name
   Vue.prototype.$appName = productName
   Vue.prototype.$appVersion = version
-  Vue.prototype.$contactPhone = '55 1234 5678'
-  Vue.prototype.$whatsappPhone = '55 1234 5678'
+  Vue.prototype.$contactPhone = '55 8932 2028'
+  Vue.prototype.$whatsappPhone = '55 4792 5214'
   Vue.prototype.$contactMail = 'info@bedbathandbeyondrewards.mx'
   Vue.prototype.$GoogleMapsApiKey = 'AIzaSyBZ47-1LV7EYv29o3qOBFy-M18FvILyYyk'
   

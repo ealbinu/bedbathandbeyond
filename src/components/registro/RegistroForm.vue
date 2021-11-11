@@ -28,11 +28,11 @@ q-form(@submit.prevent="submit").row.q-pa-xl.q-col-gutter-sm
                 q-input(v-model="user.CellPhone" required autocomplete="tel" type="tel" label="Teléfono celular *" fill-mask mask="##-####-####" unmasked-value  v-bind="$inputAttr" hint="10 dígitos." :rules="[ val => val && val.length >= 10 || '10 dígitos.']" ref="CellPhone")
             
             .col-12
-                q-input(v-model="user.BirthDate" required mask="date" fill-mask autocomplete="bday" label="Fecha de nacimiento *" stack-label v-bind="$inputAttr")
+                q-input(v-model="user.BirthDate" required mask="date" fill-mask autocomplete="bday" label="Fecha de nacimiento *" stack-label v-bind="$inputAttr" @change="datePickerSelected")
                     template(v-slot:append)
                         q-icon(name="las la-calendar").cursor-pointer
-                            q-popup-proxy(ref="birthproxy")
-                                q-date(v-model="user.BirthDate" minimal)
+                            q-popup-proxy(ref="birthproxy"): div
+                                q-date(v-model="user.BirthDate" minimal @input="datePickerSelected")
 
             .col-12
                 q-radio(v-model="user.Sex" val="Femenino" label="Femenino")
@@ -116,6 +116,10 @@ export default {
         },
     },
     methods: {
+        datePickerSelected () {
+            this.$refs.birthproxy.hide()
+            console.log('datepickeeeed')
+        },
         submitReady () {
             if(
                 this.user.Email &&
